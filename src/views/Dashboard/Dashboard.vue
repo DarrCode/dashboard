@@ -19,7 +19,7 @@
                 <v-col lg="3" sm="6" md="5" cols="12">
                     <v-card class="mx-1 mb-1">
                         <v-card-title class="pa-6 pb-3">
-                            <p>Visits Today</p>
+                            <p>Hoteles</p>
                             <v-spacer></v-spacer>
                             <v-menu>
                                 <template v-slot:activator="{ on, attrs }">
@@ -42,15 +42,6 @@
                                 <v-col cols="5" class="my-auto">
                                     <span class="font-weight-medium card-dark-grey" style="font-size: 24px">12, 678</span>
                                 </v-col>
-                                <v-col cols="6">
-                                    <Trend
-                                        :data="getRandomDataForTrends()"
-                                        :gradient="mock.trend.gradient"
-                                        :height="40"
-                                        stroke-width="4"
-                                        smooth
-                                    />
-                                </v-col>
                             </v-row>
                             <v-row no-gutters class="justify-space-between pb-3">
                                 <v-col cols="5">
@@ -72,7 +63,67 @@
                 <v-col lg="3" sm="6" md="7" cols="12">
                     <v-card class="mx-1 mb-1">
                         <v-card-title class="pa-6 pb-3">
-                            <p>App Performance</p>
+                            <p>Camas & Staff</p>
+                            <v-spacer></v-spacer>
+                            <v-menu>
+                                <template v-slot:activator="{ on, attrs }">
+                                    <v-btn icon v-bind="attrs" v-on="on">
+                                        <v-icon color="textColor">mdi-dots-vertical</v-icon>
+                                    </v-btn>
+                                </template>
+                                <v-list>
+                                    <v-list-item
+                                        v-for="(item, i) in mock.menu"
+                                        :key="i"
+                                        @click="() => {}"
+                                    >
+                                        <v-list-item-title>{{ item }}</v-list-item-title>
+                                    </v-list-item>
+                                </v-list>
+                            </v-menu>
+                        </v-card-title>
+                        <v-card-text class="pa-6 pt-0">
+                            <v-row no-gutters class="pb-5">
+                                <div class="mr-4">
+                                    <v-icon color="primary" class="ml-n2">
+                                        mdi-circle-medium
+                                    </v-icon>
+                                    <span class="card-light-grey">Integration</span>
+                                </div>
+                                <div>
+                                    <v-icon color="warning"> mdi-circle-medium </v-icon>
+                                    <span class="card-light-grey">SDK</span>
+                                </div>
+                            </v-row>
+                            <v-row no-gutters class="pb-3">
+                                <v-col>
+                                    <div class="text-h6 card-light-grey font-weight-regular">
+                                        Integration
+                                    </div>
+                                    <v-progress-linear
+                                        :value="value"
+                                        background-color="#ececec"
+                                        color="primary"
+                                    ></v-progress-linear>
+                                </v-col>
+                            </v-row>
+                            <v-row no-gutters class="pb-1">
+                                <v-col>
+                                    <div class="text-h6 card-light-grey font-weight-regular">SDK</div>
+                                    <v-progress-linear
+                                        :value="value2"
+                                        background-color="#ececec"
+                                        color="warning"
+                                    ></v-progress-linear>
+                                </v-col>
+                            </v-row>
+                        </v-card-text>
+                    </v-card>
+                </v-col>
+                <v-col lg="3" sm="6" md="7" cols="12">
+                    <v-card class="mx-1 mb-1">
+                        <v-card-title class="pa-6 pb-3">
+                            <p>Usuarios</p>
                             <v-spacer></v-spacer>
                             <v-menu>
                                 <template v-slot:activator="{ on, attrs }">
@@ -201,7 +252,17 @@
 </template>
 
 <script>
+
+
+import { Component, Provide, Vue } from 'vue-property-decorator'
+import Web3Provider from '@/providers/web3.provider';
+
 import mock from './mock';
+
+/* const web3 = new Web3('https://data-seed-prebsc-1-s1.binance.org:8545');
+
+const Items = await new web3.eth.Contract(Market.abi, process.env.development.VUE_APP_TOKEN_MARKETPLACE);
+const hotels = await Items.methods.totalSupply().call() */
 
 export default {
     name: 'Dashboard',

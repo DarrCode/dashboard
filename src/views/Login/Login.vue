@@ -21,38 +21,6 @@
                                                     Sign in with MetaMask
                                                 </v-btn>
                                             </v-col>
-                                            <v-col cols="12" class="d-flex align-center my-2">
-                                                <v-divider></v-divider>
-                                                <span class="px-5"> or </span>
-                                                <v-divider></v-divider>
-                                            </v-col>
-                                            <v-form>
-                                                <v-col>
-                                                    <v-text-field
-                                                        v-model="email"
-                                                        value="admin@flatlogic.com"
-                                                        label="Email Address"
-                                                        required
-                                                    ></v-text-field>
-                                                    <v-text-field
-                                                        v-model="password"
-                                                        type="password"
-                                                        label="Password"
-                                                        hint="At least 6 characters"
-                                                        required
-                                                    ></v-text-field>
-                                                </v-col>
-                                                <v-col class="d-flex justify-space-between">
-                                                    <v-btn
-                                                        large
-                                                        :disabled="password.length === 0 || email.length === 0"
-                                                        color="primary"
-                                                        @click="login"
-                                                    >
-                                                        INICIAR
-                                                    </v-btn>
-                                                </v-col>
-                                            </v-form>
                                         </v-row>
                                     </v-container>
                                 </v-form>
@@ -79,21 +47,10 @@ export default {
     name: 'Login',
     data() {
         return {
-            email: 'admin@flatlogic.com',
-            createFullName: 'John Smith',
-            createEmail: 'john@flatlogic.com',
-            createPassword: '123456',
-            password: '123456',
             logo: require('@/assets/img/logo.png'),
             metamask: require('@/assets/img/metamask.png'),
             date: new Date().getFullYear(),
         };
-    },
-    methods: {
-        login() {
-            window.localStorage.setItem('authenticated', true);
-            this.$router.push('/dashboard');
-        },
     },
     created() {
         if (window.localStorage.getItem('authenticated') === 'true') {
